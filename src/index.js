@@ -20,22 +20,27 @@ class App extends Component  {
 
         this.state = { videos: [] };
 
-        YTSearch({key: API_KEY, term: 'surfboard'}, function (videos) {
-            console.log("videos:", videos);
 
-            this.setState({videos});
-            console.log("this.state:", this.state);
-            console.log("this.state.video:" , this.state.videos);
+
+        YTSearch({key: API_KEY, term: 'surfboard'},  (videos) => {
+            console.log("1.videos:", videos);
+
+            this.setState({videos:videos});
+            console.log("1.this.state:", this.state);
+            console.log("1.this.state.video:" , this.state.videos);
         });
+
+        console.log("2.this.state:", this.state);
+        console.log("2.this.state.video:" , this.state.videos);
     }
 
     render() {
-        console.log("this.state:", this.state);
+        console.log("3.this.state:", this.state);
         return (
             <div>
                 <p>ASD</p>
                 <SearchBar />
-                <VideoList videos={this.state}/>
+                <VideoList videos={this.state.videos}/>
             </div>
         );
     }
